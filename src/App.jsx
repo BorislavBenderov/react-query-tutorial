@@ -1,10 +1,11 @@
-function App() {
+import { TodoList } from "./features/todos/TodoList";
 
+function App() {
   return (
     <div className="App">
-      Hello
+      <TodoList />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
