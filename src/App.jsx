@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 import { SuperHeroes } from "./pages/SuperHeroes";
 import { RQSuperHeroes } from "./pages/RQSuperHeroes";
 import { SuperHero } from "./components/SuperHero";
+import { ParallelQueries } from "./pages/ParallelQueries";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/super-heroes" element={<SuperHeroes />} />
         <Route path="/rq-super-heroes" element={<RQSuperHeroes />} />
         <Route path="/super-heroes/:heroId" element={<SuperHero />} />
+        <Route path="/parallel" element={<ParallelQueries />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
     </div>
