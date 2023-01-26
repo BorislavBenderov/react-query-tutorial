@@ -1,5 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { useSuperHeroesData } from '../hooks/useSuperHeroesData';
 
 export const SuperHeroes = () => {
   const onSuccess = (data) => {
@@ -10,18 +9,7 @@ export const SuperHeroes = () => {
     console.log("error", error);
   };
 
-  const { data, isLoading, isError, error } = useQuery(
-    ["super-heroes"],
-    () => {
-      return axios
-        .get("http://localhost:3500/superheroes")
-        .then((res) => res.data);
-    },
-    {
-      onSuccess,
-      onError,
-    }
-  );
+  const { data, isLoading, isError, error } = useSuperHeroesData(onSuccess, onError);
 
   if (isError) {
     return <h1>{error.message}</h1>;
