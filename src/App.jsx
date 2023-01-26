@@ -3,10 +3,12 @@ import { TodoList } from "./features/todos/TodoList";
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
 import { Profile } from "./pages/Profile";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
