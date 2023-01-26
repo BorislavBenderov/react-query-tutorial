@@ -2,12 +2,31 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const SuperHeroes = () => {
-  const { data, isLoading } = useQuery(["super-heroes"], () => {
-    return axios
-      .get("http://localhost:3500/superheroes")
-      .then((res) => res.data);
-  });
-  console.log(data);
+  const onSuccess = (data) => {
+    console.log("success", data);
+  };
+
+  const onError = (error) => {
+    console.log("error", error);
+  };
+
+  const { data, isLoading, isError, error } = useQuery(
+    ["super-heroes"],
+    () => {
+      return axios
+        .get("http://localhost:3500/superheroes")
+        .then((res) => res.data);
+    },
+    {
+      onSuccess,
+      onError,
+    }
+  );
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
   return (
     <div>
       {isLoading
