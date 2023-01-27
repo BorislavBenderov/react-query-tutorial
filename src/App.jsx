@@ -9,6 +9,7 @@ import { RQSuperHeroes } from "./pages/RQSuperHeroes";
 import { SuperHero } from "./components/SuperHero";
 import { ParallelQueries } from "./pages/ParallelQueries";
 import { DependentQueries } from "./pages/DependentQueries";
+import { PaginatedQueries } from "./pages/PaginatedQueries";
 
 function App() {
   return (
@@ -22,7 +23,11 @@ function App() {
         <Route path="/rq-super-heroes" element={<RQSuperHeroes />} />
         <Route path="/super-heroes/:heroId" element={<SuperHero />} />
         <Route path="/parallel" element={<ParallelQueries />} />
-        <Route path="/dependent" element={<DependentQueries email='vishwas@example.com' />} />
+        <Route
+          path="/dependent"
+          element={<DependentQueries email="vishwas@example.com" />}
+        />
+        <Route path="/paginated" element={<PaginatedQueries />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
     </div>
