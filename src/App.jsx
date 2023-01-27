@@ -10,6 +10,7 @@ import { SuperHero } from "./components/SuperHero";
 import { ParallelQueries } from "./pages/ParallelQueries";
 import { DependentQueries } from "./pages/DependentQueries";
 import { PaginatedQueries } from "./pages/PaginatedQueries";
+import { InfiniteQueries } from "./pages/InfiniteQueries";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           element={<DependentQueries email="vishwas@example.com" />}
         />
         <Route path="/paginated" element={<PaginatedQueries />} />
+        <Route path="/infinite" element={<InfiniteQueries />} />
         <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
       </Routes>
     </div>
