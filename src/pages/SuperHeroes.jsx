@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
+import {
+  useAddSuperHeroData,
+  useSuperHeroesData,
+} from "../hooks/useSuperHeroesData";
 
 export const SuperHeroes = () => {
+  const [name, setName] = useState("");
+  const [alterEgo, setAlterEgo] = useState("");
   const onSuccess = (data) => {
     console.log("success", data);
   };
@@ -15,12 +21,41 @@ export const SuperHeroes = () => {
     onError
   );
 
+  const { mutate: addHero } = useAddSuperHeroData();
+
+  const handleAddHeroClick = (e) => {
+    e.preventDefault();
+
+    const hero = {
+      name,
+      alterEgo,
+    };
+
+    addHero(hero);
+
+    setName("");
+    setAlterEgo("");
+  };
+
   if (isError) {
     return <h1>{error.message}</h1>;
   }
 
   return (
     <div>
+      <div>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          value={alterEgo}
+          onChange={(e) => setAlterEgo(e.target.value)}
+        />
+        <button onClick={handleAddHeroClick}>Add Hero</button>
+      </div>
       {isLoading
         ? "Loading..."
         : data.map((hero) => (
